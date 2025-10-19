@@ -1,0 +1,8 @@
+deb http://deb.debian.org/debian/ codename main contrib non-free
+deb-src http://deb.debian.org/debian/ codename main contrib non-free
+
+deb http://deb.debian.org/debian/ codename-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ codename-updates main contrib non-free
+
+deb http://deb.debian.org/debian-security/ codename-security main contrib non-free
+deb-src http://deb.debian.org/debian-security/ codename-security main contrib non-free
