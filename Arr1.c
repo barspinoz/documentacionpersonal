@@ -1,3 +1,7 @@
+/*
+Ing. Alexis Cote
+*/
+
 #include<stdio.h>
 
 void main(){
