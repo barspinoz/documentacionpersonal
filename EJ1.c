@@ -115,34 +115,6 @@ void arreglos_enteros() {
 		printf("\n");
 	}
 
-	// ARREGLO TRIDIMENCIONAL
-	//
-	// Llenar arreglo
-	printf("=== EJEMPLO DE ARREGLO TRIDIMENCIONAL ===\n");
-	printf("ARREGLO DE 3x3x3\n");
-	printf("INGRESE ENTEROS PARA LLENAR EL ARREGLO\n");
-
-	for(int i = 0; i < 3; i++) {
-		for(int j = 0; j < 3; j++) {
-			for(int k = 0; k < 3; k++) {
-				printf("\tArreglo[%d][%d][%d]: ", i, j, k);
-				scanf("%d", &enteros_tres[i][j][k]);
-			}
-		}
-	}
-
-	// Mostrar el arreglo
-	printf("\nDATOS QUE SE INGRESARON:\n");
-
-	for(int i = 0; i < 3; i++) {
-		for(int j = 0; j < 3; j++) {
-			for(int k = 0; k < 3; k++) {
-				printf("%d\t", enteros_tres[i][j][k]);
-			}
-			printf("\n");
-		}
-		printf("\n");
-	}
 }
 
 // ARREGLOS FLOTANTES
