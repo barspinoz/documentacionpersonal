@@ -2,7 +2,7 @@
  * CALCULADORA
  *
  *
- * ULTIMA MODIFICACION: 21 de febrero del 2026
+ * ULTIMA MODIFICACION: 23 de febrero del 2026
  *
  * ESPINOSA SALVADOR ROMAN
  *
@@ -123,7 +123,7 @@ void resta(int entrada[]) {
 
 	// Calculo de la resta
 	for (int i = 0; i < entrada[0]; i++) {
-		resta = entrada[i+1] - entrada[i+2];
+		resta += resta - entrada[i];
 	}
 	// Imprimir la resta
 	printf("\nEL RESULTADO DE LA RESTA ES DE: %d\n", resta);
