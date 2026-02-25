@@ -2,7 +2,7 @@
  * CALCULADORA
  *
  *
- * ULTIMA MODIFICACION: 23 de febrero del 2026
+ * ULTIMA MODIFICACION: 25 de febrero del 2026
  *
  * ESPINOSA SALVADOR ROMAN
  *
