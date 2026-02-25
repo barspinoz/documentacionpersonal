@@ -10,7 +10,6 @@
 
 // Declaracion de las bibliotecas a usar
 #include <stdio.h>
-// #include <math.h>
 
 // Constantes
 #define MAX 30
@@ -28,19 +27,30 @@ void division(int);
 // Funcion principal main
 void main() {
 	// Variables a utilizar
-	int caso = 0, entrada[MAX] = {0}; // La posicion [0] del arreglo sera el numero de numeros a operar
+	int caso = 0, contador = 0, *cont = 0, blindaje = 0, blindaje_arreglo[MAX] = {0}, entrada[MAX] = {0};
 
 	// Preguntar los numeros a usar
 	printf("¿CUANTOS NUMEROS DESEA OPERAR?\n");
 	printf("DESEO OPERAR: ");
-	scanf("%d", &entrada[0]);
-	// printf("entrada[0] = %d almacenado en %x\n", entrada[0], &entrada[0]); // DEBUG
-	
+	blindaje = scanf("%d", &contador);
+	while(getchar() != '\n');
+	if (blindaje != 1 || contador < 1 || contador > MAX) {
+		printf("ERROR. VUELVA A INTENTAR\n");
+		continue;
+	}
+	blindaje = 0; // Limpiar variable para reutilizar
+	*cont = &contador;
+
 	// Guardar los numeros en el arreglo
 	printf("INGRESE LOS NUMEROS A OPERAR:\n");
 	for (int i = 0; i < entrada[0]; i++) {
 		printf("NUMERO %d: ", i+1);
-		scanf("%d", &entrada[i+1]);
+		blindaje[i] = scanf("%d", &entrada[i]);
+		while(getchar() != '\n');
+		if (blindaje_arreglo[i] != 1 || contador < 1 || contador > MAX) {
+			printf("ERROR. VUELVA A INTENTAR\n");
+			continue;
+		}
 	}
 
 	// Imprimir datos ingresados
@@ -50,9 +60,9 @@ void main() {
 	for (int i = 0; i < entrada[0]; i++) {
 		printf("\t%d", entrada[i+1]);
 	}
-	
+
 	// Menu de opciones
-	do {	
+	do {
 		// Opciones
 		printf("\n=== CALCULADORA con enteros ===\n");
 		printf("=== ¿QUE DESEA CALCULAR? ===\n");
@@ -63,13 +73,17 @@ void main() {
 		printf("5. DIVISION ENTERA\n");
 		printf("6. SALIR\n");
 		printf("INGRESE SU OPCION: ");
-		scanf("%d", &caso);
-		// printf("caso = %d almacenado en %x\n", caso, &caso); // DEBUG
+		blindaje = scanf("%d", &caso);
+		while(getchar() != '\n');
+		if (blindaje != 1 || contador < 1 || contador > MAX) {
+			printf("ERROR. VUELVA A INTENTAR\n");
+			continue;
+		}
 
 		switch(caso) {
 			// SUMA
 			case 1:
-				suma(entrada);
+				suma(*cont, entrada);
 				break;
 			// RESTA
 			case 2:
@@ -103,13 +117,14 @@ void main() {
 }
 
 // Funcion de suma
-void suma(int entrada[]) {
+void suma(int &cont, int entrada[]) {
 	// Variable intermedia para la suma
 	int suma = 0;
-	
+	int contador = cont;
+
 	// Calculo de la suma
-	for (int i = 0; i < entrada[0]; i++) {
-		suma += entrada[i+1];
+	for (int i = 0; i < contador; i++) {
+		suma += entrada[i];
 	}
 	// Imprimir la suma
 	printf("\nEL RESULTADO DE LA SUMA ES DE: %d\n", suma);
@@ -117,7 +132,7 @@ void suma(int entrada[]) {
 
 // Funcion de resta
 // TODO: IMPLEMENTAR CORRECTAMENTE LA RESTA
-void resta(int entrada[]) {
+void resta(int contador, int entrada[]) {
 	// Variable intermedia para la resta
 	int resta = 0;
 
@@ -134,7 +149,7 @@ void resta(int entrada[]) {
 void multiplicacion (int entrada[]) {
 	// Variable intermedia para la multiplicacion
 	int multiplicacion = 0;
-	
+
 	/* DEBUG: Imprimir entrada[]
 	for (int i = 0; i < entrada[0]; i++) {
 		printf("DEBUG: entrada[%d]: \t%d\n", i+1, entrada[i+1]);
