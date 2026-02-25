@@ -15,9 +15,9 @@
 #define MAX 30
 
 // Declaracion de las funciones a usar
-void suma();
-void resta();
-void multiplicacion();
+void suma(int *, int *);
+void resta(int *, int *);
+void multiplicacion(int *, int *);
 
 /*
 void modulo(int);
@@ -36,16 +36,15 @@ void main() {
 	while(getchar() != '\n');
 	if (blindaje != 1 || contador < 1 || contador > MAX) {
 		printf("ERROR. VUELVA A INTENTAR\n");
-		continue;
 	}
 	blindaje = 0; // Limpiar variable para reutilizar
-	*cont = &contador;
+  *cont = contador;
 
 	// Guardar los numeros en el arreglo
 	printf("INGRESE LOS NUMEROS A OPERAR:\n");
 	for (int i = 0; i < entrada[0]; i++) {
 		printf("NUMERO %d: ", i+1);
-		blindaje[i] = scanf("%d", &entrada[i]);
+    blindaje_arreglo[i] = scanf("%d", &entrada[i]);
 		while(getchar() != '\n');
 		if (blindaje_arreglo[i] != 1 || contador < 1 || contador > MAX) {
 			printf("ERROR. VUELVA A INTENTAR\n");
@@ -83,15 +82,15 @@ void main() {
 		switch(caso) {
 			// SUMA
 			case 1:
-				suma(*cont, entrada);
+        suma(cont, entrada);
 				break;
 			// RESTA
 			case 2:
-				resta(entrada);
+        resta(cont, entrada);
 				break;
 			// MULTIPLICACION
 			case 3:
-				multiplicacion(entrada);
+        multiplicacion(cont, entrada);
 				break;
 			// MODULO
 			case 4:
@@ -117,10 +116,10 @@ void main() {
 }
 
 // Funcion de suma
-void suma(int &cont, int entrada[]) {
+void suma(int entrada[], int *cont) {
 	// Variable intermedia para la suma
 	int suma = 0;
-	int contador = cont;
+  int contador = *cont;
 
 	// Calculo de la suma
 	for (int i = 0; i < contador; i++) {
@@ -132,13 +131,13 @@ void suma(int &cont, int entrada[]) {
 
 // Funcion de resta
 // TODO: IMPLEMENTAR CORRECTAMENTE LA RESTA
-void resta(int contador, int entrada[]) {
+void resta(int *contador, int entrada[]) {
 	// Variable intermedia para la resta
 	int resta = 0;
 
 	// Calculo de la resta
 	for (int i = 0; i < entrada[0]; i++) {
-		resta += resta - entrada[i];
+    resta += (resta - entrada[i]);
 	}
 	// Imprimir la resta
 	printf("\nEL RESULTADO DE LA RESTA ES DE: %d\n", resta);
@@ -146,7 +145,7 @@ void resta(int contador, int entrada[]) {
 
 
 // Funcion de multiplicacion
-void multiplicacion (int entrada[]) {
+void multiplicacion (int *contador, int entrada[]) {
 	// Variable intermedia para la multiplicacion
 	int multiplicacion = 0;
 
